@@ -33,3 +33,8 @@ class Player(db.Model):
     progressive_passes: Mapped[float] = mapped_column()
     progressive_passes_received: Mapped[float] = mapped_column()
 
+    def to_dict(self):
+        dictionary = {}
+        for column in self.__table__.columns:
+            dictionary[column.name] = getattr(self,column.name)
+        return dictionary

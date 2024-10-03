@@ -1,4 +1,3 @@
-
 from app import app
 from player_model import Player, db
 from data_sge import players_data
