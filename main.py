@@ -7,3 +7,16 @@ from sqlalchemy import Integer, String, Boolean
 
 from data_sge import players_data
 data = players_data
+
+app = Flask(__name__)
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
