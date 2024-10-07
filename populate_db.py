@@ -3,7 +3,7 @@ from player_model import Player, db
 from data_sge import players_data
 
 data = players_data
-# Convert the age to a float
+
 for player in players_data:
     player['club'] = 'Eintracht Frankfurt'
 

@@ -1,7 +1,6 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from sqlalchemy import Integer, String, Boolean
+
 
 
 class Base(DeclarativeBase):
@@ -39,5 +38,6 @@ class Player(db.Model):
             dictionary[column.name] = getattr(self,column.name)
         return dictionary
 
+    # Same here as above - just with a dictionary comprehension
     def serialize(self):
         return {column.name: getattr(self, column.name) for column in self.__table__.columns}

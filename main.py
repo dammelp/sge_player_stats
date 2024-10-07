@@ -1,10 +1,10 @@
 import json
-
 from flask import jsonify, request
 from app import app
 from player_model import Player, db
 
 
+# Get all players
 @app.route("/players", methods=["GET"])
 def retrieve_all_player():
     result = db.session.execute(db.select(Player))
@@ -12,7 +12,7 @@ def retrieve_all_player():
     all_players_serialized = [player.to_dict() for player in all_players]
     return jsonify(all_players_serialized)
 
-
+# Get player by ID
 @app.route("/players/<int:id>", methods=["GET"])
 def retrieve_player_by_id(id):
     player = Player.query.get(id)
@@ -21,7 +21,7 @@ def retrieve_player_by_id(id):
     player_serialized = player.to_dict()
     return jsonify(player_serialized)
 
-
+# Add a new player
 @app.route("/players", methods=["POST"])
 def add_player():
     data = request.get_json()
@@ -83,7 +83,7 @@ def add_player():
 
     return jsonify(new_player.serialize())
 
-
+# Update player
 @app.route("/players/<id>", methods=["PUT"])
 def update_player(id):
     player = Player.query.get(id)
@@ -133,7 +133,7 @@ def update_player(id):
 
     return jsonify(player.serialize())
 
-
+# Delete player
 @app.route("/players/<id>", methods=["DELETE"])
 def delete_player(id):
     player = Player.query.get(id)
